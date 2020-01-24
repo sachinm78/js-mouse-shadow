@@ -25,7 +25,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    color: black;
+    color: red;
 }
 
 h1 {
@@ -40,7 +40,14 @@ const hero = document.querySelector('.hero');
 const text = hero.querySelector('h1');
 
 function shadow(e) {
-    console.log(e)
+    const { offsetWidth: width, offsetHeight: height } = hero;
+    let { offsetX: x, offsetY: y } = e;
+    // console.log(x, y)
+
+    if (this !== e.target) {
+      x = x + e.target.offsetLeft;
+      y = y + e.target.offsetTop;
+    }
 }
 
 hero.addEventListener('mousemove', shadow);
